@@ -1,0 +1,199 @@
+@font-face {
+    font-family: hobo;
+    src: url("../fonts/HoboStd.otf");
+}
+
+header {
+    background-color: rgba(0,0,0,0.6);
+    color: rgb(255, 255, 255);
+    padding: 20px 0;
+    font-family: hobo;
+    
+    div {
+        padding: 30px 0;
+        box-shadow: 0 0 22px 6px rgb(219, 219, 219);
+    }
+    h1 {
+        text-align:center;
+    }
+}
+main {
+    background-color: rgb(238, 238, 238);
+}
+.board {
+    background-color: rgb(240, 238, 238);
+    background-image: url("../assets/bg.jpg");
+    margin: 20px 0;
+    padding: 5%;
+    border-radius: 2px;
+    box-shadow: 0 0 4px 1px rgb(156, 156, 156);
+
+    &>div {
+        margin: 0 auto;
+        text-align:center;
+        
+        img {
+            background-color: rgba(0,0,0,0);
+            width: 20%;
+            filter: grayscale(200);
+            scale: 1;
+            animation: unhover-img 1 .4s ease-out;
+            cursor: pointer;
+            &:hover {
+                animation: gray-color 1 .4s ease-out;
+                filter: grayscale(0);
+                scale: 1.1;
+                z-index: 1;
+            }
+            &#pair {
+                cursor: default;
+            }
+        }
+    }
+}
+.score>div {
+    background-image: url("../assets//card.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin: 20px 1%;
+    padding: 20px;
+    min-height: 520px;
+    font-family: hobo;
+    h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 30px;
+        margin-top: 50px;
+
+        span {
+            &:first-of-type {
+                color: #F08143;
+            }
+            &:last-of-type {
+                color: #AF9778;
+            }
+        }
+    }
+    div {
+        margin: 20px auto;
+        width: max-content;
+    }
+    p {
+        color: gray;
+        font-size: 20px;
+        text-transform: uppercase;
+        text-align: center;
+        span {
+            color: #F08143;
+        }
+    }
+}
+
+@keyframes gray-color {
+    from {
+        filter: grayscale(200);
+        scale: 1;
+    }
+    to {
+        filter: grayscale(0);
+        scale: 1.1;
+    }
+}
+@keyframes unhover-img {
+    from {
+        filter: grayscale(0);
+        scale: 1.1;
+    }
+    to {
+        filter: grayscale(200);
+        scale: 1;
+    }
+}
+
+footer {
+    background-color: rgba(0,0,0,0.6);
+    box-shadow: 0 -4px 6px black;
+    color: white;
+    font-family: hobo;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 120px;
+    p {
+        margin-bottom: 0;
+    }
+}
+.earn-point {
+    position: absolute;
+    bottom: 0px;
+    font-size: 24px;
+    color: rgb(255, 94, 0);
+    font-family: hobo;
+    opacity: 0;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    animation: show-overlay 1 .6s ease-out;
+
+    input {
+        position: fixed;
+        top: 45%;
+        left: 45%;
+        background-color: #F08143;
+        box-shadow: 0 0 6px 2px #F08143;
+        border-radius: 2px;
+        border: 0;
+        color: white;
+        font-family: hobo;
+        font-size: 20px;
+        padding: 6px 30px;
+        animation: unhover-button 1 .4s ease-out;
+
+        &:hover {
+            background-color: white;
+            box-shadow: 0 0 6px 2px white;
+            color: #F08143;
+            animation: hover-button 1 .4s ease-out;
+        }
+    }
+}
+
+@keyframes show-overlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes hover-button {
+    from {
+        background-color: #F08143;
+        box-shadow: 0 0 6px 2px #F08143;
+        color: white;
+    }
+    to {
+        background-color: white;
+        box-shadow: 0 0 6px 2px white;
+        color: #F08143;
+    }
+}
+@keyframes unhover-button {
+    from {
+        background-color: white;
+        box-shadow: 0 0 6px 2px white;
+        color: #F08143;
+    }
+    to {
+        background-color: #F08143;
+        box-shadow: 0 0 6px 2px #F08143;
+        color: white;
+    }
+}
