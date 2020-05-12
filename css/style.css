@@ -44,7 +44,8 @@ main {
   width: 20%;
   -webkit-filter: grayscale(200);
           filter: grayscale(200);
-  scale: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
   -webkit-animation: unhover-img 1 .4s ease-out;
           animation: unhover-img 1 .4s ease-out;
   cursor: pointer;
@@ -55,7 +56,8 @@ main {
           animation: gray-color 1 .4s ease-out;
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
-  scale: 1.1;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   z-index: 1;
 }
 
@@ -111,12 +113,14 @@ main {
   from {
     -webkit-filter: grayscale(200);
             filter: grayscale(200);
-    scale: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   to {
     -webkit-filter: grayscale(0);
             filter: grayscale(0);
-    scale: 1.1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
 }
 
@@ -124,12 +128,14 @@ main {
   from {
     -webkit-filter: grayscale(200);
             filter: grayscale(200);
-    scale: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   to {
     -webkit-filter: grayscale(0);
             filter: grayscale(0);
-    scale: 1.1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
 }
 
@@ -137,12 +143,14 @@ main {
   from {
     -webkit-filter: grayscale(0);
             filter: grayscale(0);
-    scale: 1.1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
   to {
     -webkit-filter: grayscale(200);
             filter: grayscale(200);
-    scale: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
@@ -150,12 +158,14 @@ main {
   from {
     -webkit-filter: grayscale(0);
             filter: grayscale(0);
-    scale: 1.1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
   to {
     -webkit-filter: grayscale(200);
             filter: grayscale(200);
-    scale: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 

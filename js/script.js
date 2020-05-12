@@ -26,7 +26,7 @@ cards.map((card, index) => {
 					scaleX: 0
 				},200);
 				setTimeout(() => {
-					$(this).attr("src", card.src); // CHANGING FIRST CARD TO ANIMAL
+					$(this).attr("src", card.src);	// CHANGING FIRST CARD TO ANIMAL
 					flippedCards[0] = card.src;
 					$(this).attr("id", "flipped1");
 					$(this).attr("id", "flipped");
@@ -35,7 +35,7 @@ cards.map((card, index) => {
 					},200)
 				},200)
 				
-				toggle = true					// SWITCHING TO SECOND CARD
+				toggle = true	// SWITCHING TO SECOND CARD
 			}
 	
 			/* SECOND CARD */
@@ -56,8 +56,8 @@ cards.map((card, index) => {
 					},200)
 					$("img").css("pointer-events", "none");
 					setTimeout(() => {
-						if(flippedCards[0] === flippedCards[1]) {			// FLIP CARDS
-							$("img#flipped").transition({					//WHEN SUCCESS
+						if(flippedCards[0] === flippedCards[1]) {	// FLIP CARDS WHEN SUCCESS
+							$("img#flipped").transition({
 								opacity: 0
 							},400);
 							$("img#flipped").attr("id", "pair");
@@ -78,11 +78,11 @@ cards.map((card, index) => {
 							score.pairs += 1;
 						}
 						else {
-							$("img#flipped").transition({					// FLIP CARDS
-								scaleX: 0									// WHEN MISS
+							$("img#flipped").transition({	// FLIP CARDS WHEN MISS
+								scaleX: 0
 							},200)
-							$("img").attr("src", "./assets//card_back.png");	//FLIP BACK
-							setTimeout(() => {								   // ALL CARDS
+							$("img").attr("src", "./assets//card_back.png");	//FLIP BACK ALL CARDS
+							setTimeout(() => {
 								$("img#flipped").transition({
 									scaleX: 1
 								},200)
