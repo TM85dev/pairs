@@ -24,9 +24,9 @@ cards.map((card, index) => {
 				setTimeout(() => {
 					$(this).attr("src", card.src);	// CHANGING FIRST CARD TO ANIMAL
 					flippedCards[0] = card.src;
-					$(this).attr("id", "flipped1");
-					$(this).attr("id", "flipped");
 				},200);
+				$(this).attr("id", "flipped1");
+				$(this).attr("id", "flipped");
 				$(this).css("pointer-events", "none");
 				toggle = true;	// SWITCHING TO SECOND CARD
 			}
@@ -38,9 +38,9 @@ cards.map((card, index) => {
 					setTimeout(() => {
 						$(this).attr("src", card.src);	// CHANGING SECOND CARD TO ANIMAL
 						flippedCards[1] = card.src;
-						$(this).attr("id", "flipped2");
-						$(this).attr("id", "flipped");
 					},200);
+					$(this).attr("id", "flipped2");
+					$(this).attr("id", "flipped");
 					$("img").css("pointer-events", "none");
 					setTimeout(() => {
 						if(flippedCards[0] === flippedCards[1]) {	// FLIP CARDS WHEN SUCCESS

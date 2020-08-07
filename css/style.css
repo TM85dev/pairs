@@ -81,6 +81,11 @@ main {
   cursor: default;
 }
 
+.board > div img#flipped {
+  -webkit-animation: clicked-card 1 .4s ease-out;
+          animation: clicked-card 1 .4s ease-out;
+}
+
 .score > div {
   background-image: url("../assets//card.png");
   background-size: contain;
@@ -123,6 +128,36 @@ main {
 
 .score > div p span {
   color: #F08143;
+}
+
+@-webkit-keyframes clicked-card {
+  from {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  50% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@keyframes clicked-card {
+  from {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  50% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
 }
 
 @-webkit-keyframes gray-color {
