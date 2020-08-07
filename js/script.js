@@ -1,28 +1,30 @@
 $(document).ready(function() {
 	
+// VARIABLES
 const cards = [];
 const flippedCards = [];
 let score = {total: 0, tries: 0, pairs: 0};
 let toggle = false;
+
 
 for(let i=0; i<=5; i++) {
 	cards.push({id:cards.length, src:`./assets//card_${i}.png`});
 	cards.push({id:cards.length, src:`./assets//card_${i}.png`});
 }
 
+// RANDOM SORT CARDS
 cards.sort(function(a, b) {
 	return 0.5 - Math.random();
 });
 
 
-/* CLICK CARD */
 cards.map((card, index) => {
 	$("img").eq(index).click(function() {
 
 			/* FIRST CARD */
 			if(toggle === false) {
 				setTimeout(() => {
-					$(this).attr("src", card.src);	// CHANGING FIRST CARD TO ANIMAL
+					$(this).attr("src", card.src);	// FIRST CARD FLIPPED
 					flippedCards[0] = card.src;
 				},200);
 				$(this).attr("id", "flipped1");
@@ -36,7 +38,7 @@ cards.map((card, index) => {
 				toggle = false;
 				if($(this).attr("src") === "./assets//card_back.png") {
 					setTimeout(() => {
-						$(this).attr("src", card.src);	// CHANGING SECOND CARD TO ANIMAL
+						$(this).attr("src", card.src);	// SECOND CARD FLIPPED
 						flippedCards[1] = card.src;
 					},200);
 					$(this).attr("id", "flipped2");
@@ -65,7 +67,7 @@ cards.map((card, index) => {
 							score.pairs += 1;
 						}
 						else {
-							$("img").attr("src", "./assets//card_back.png");	//FLIP BACK ALL CARDS
+							$("img").attr("src", "./assets//card_back.png");	//FLIP CARDS WHEN FAILED
 							setTimeout(() => {
 								$("img#flipped").attr("id", "");					
 							},200);
@@ -96,7 +98,5 @@ cards.map((card, index) => {
 
 	})
 })
-
-
 
 })
