@@ -43,20 +43,34 @@ main {
             background-color: rgba(0,0,0,0);
             width: 20%;
             filter: grayscale(200);
-            transform: scale(1);
+            transform: scaleX(1) scaleY(1);
             animation: unhover-img 1 .4s ease-out;
             cursor: pointer;
+            transition: all .4s;
             &:hover {
                 animation: gray-color 1 .4s ease-out;
                 filter: grayscale(0);
-                transform: scale(1.1);
+                transform: scaleX(1.1) scaleY(1.1);
                 z-index: 1;
             }
-            &#pair {
+            &.pair {
                 cursor: default;
             }
-            &#flipped {
+            &.flipped {
                 animation: clicked-card 1 .4s ease-out;
+                pointer-events: none;
+                filter: grayscale(0);
+                // transform: scaleX(1);
+                transition: all .4s;
+            }
+            &.unflipped {
+                animation: clicked-card 1 .4s ease-out;
+                transition: all .4s;
+            }
+            &.disabled {
+                opacity: 0;
+                pointer-events: none;
+                transition: all .4s;
             }
         }
     }
@@ -102,13 +116,13 @@ main {
 
 @keyframes clicked-card {
     from {
-        transform: scaleX(1);
+        transform: scaleX(1) scaleY(1);
     }
     50% {
-        transform: scaleX(0);
+        transform: scaleX(0) scaleY(1);
     }
     to {
-        transform: scaleX(1);
+        transform: scaleX(1) scaleY(1);
     }
 }
 

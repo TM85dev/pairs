@@ -60,11 +60,13 @@ main {
   width: 20%;
   -webkit-filter: grayscale(200);
           filter: grayscale(200);
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  -webkit-transform: scaleX(1) scaleY(1);
+          transform: scaleX(1) scaleY(1);
   -webkit-animation: unhover-img 1 .4s ease-out;
           animation: unhover-img 1 .4s ease-out;
   cursor: pointer;
+  -webkit-transition: all .4s;
+  transition: all .4s;
 }
 
 .board > div img:hover {
@@ -72,18 +74,37 @@ main {
           animation: gray-color 1 .4s ease-out;
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scaleX(1.1) scaleY(1.1);
+          transform: scaleX(1.1) scaleY(1.1);
   z-index: 1;
 }
 
-.board > div img#pair {
+.board > div img.pair {
   cursor: default;
 }
 
-.board > div img#flipped {
+.board > div img.flipped {
   -webkit-animation: clicked-card 1 .4s ease-out;
           animation: clicked-card 1 .4s ease-out;
+  pointer-events: none;
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.board > div img.unflipped {
+  -webkit-animation: clicked-card 1 .4s ease-out;
+          animation: clicked-card 1 .4s ease-out;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.board > div img.disabled {
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all .4s;
+  transition: all .4s;
 }
 
 .score > div {
@@ -132,31 +153,31 @@ main {
 
 @-webkit-keyframes clicked-card {
   from {
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
   }
   50% {
-    -webkit-transform: scaleX(0);
-            transform: scaleX(0);
+    -webkit-transform: scaleX(0) scaleY(1);
+            transform: scaleX(0) scaleY(1);
   }
   to {
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
   }
 }
 
 @keyframes clicked-card {
   from {
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
   }
   50% {
-    -webkit-transform: scaleX(0);
-            transform: scaleX(0);
+    -webkit-transform: scaleX(0) scaleY(1);
+            transform: scaleX(0) scaleY(1);
   }
   to {
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
   }
 }
 
