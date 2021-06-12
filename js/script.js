@@ -3,6 +3,7 @@ $(document).ready(function() {
 	// VARIABLES
 	const cards = [];
 	let flippedCards = [];
+	let pairs = [];
 	let score = {total: 0, tries: 0, pairs: 0};
 	let toggle = true;
 
@@ -31,16 +32,24 @@ $(document).ready(function() {
 			$('img').css('pointer-events', 'none');
 			setTimeout(() => {
 				flippedCards.forEach(card => {
-					if(flippedCards[0].attr('src') === flippedCards[1].attr('src')) {
-						card.addClass('disabled');
-					} else {
-						card.css({transform: 'scaleX(0)', transition: 'all .4s'});
-						// card.attr('src', './assets/card_back.png');
-					}
 					card.removeClass('flipped');
-					$('img').css('pointer-events', '');
+					if(flippedCards[0].attr('src') === flippedCards[1].attr('src')) {
+						// finding pair success
+						card.addClass('disabled');
+						setTimeout(() => $('img').not('.disabled').css('pointer-events', ''), 200);
+					} else {
+						// finding pair failed
+						setTimeout(() => {
+							card.addClass('flipped');
+							setTimeout(() => card.attr('src', './assets/card_back.png'), 200);
+							setTimeout(() => card.removeClass('flipped'), 300);
+							$('img').css('pointer-events', '');
+						}, 400);
+					}
+					setTimeout(() => {
+						flippedCards = [];
+					}, 300);
 				});
-				flippedCards = [];
 			}, 300)
 		}
 	});
