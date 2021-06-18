@@ -2,9 +2,18 @@ $(document).ready(function() {
 	
 	// VARIABLES
 	const cards = [];
-	let flippedCards = [];
+	let startGame = false;
+	let flippedCards = [], delayed, delayed2;
 	let score = {total: 0, tries: 0, pairs: 0, bonus: 1, info: ''};
-	let delayed, delayed2;
+	const scoreArray = [
+		{ bonus: 1, info: '', color: '' },
+		{ bonus: 2, info: '', color: '' },
+		{ bonus: 3, info: 'GOOD', color: 'red' },
+		{ bonus: 4, info: 'NICE', color: 'orange' },
+		{ bonus: 5, info: 'GREAT', color: '#f0cb43' },
+		{ bonus: 6, info: 'SUPERB', color: '#adf043' },
+		{ bonus: 7, info: 'PERFECT', color: 'green' }
+	];
 
 	for(let i=0; i<=5; i++) {
 		cards.push({id:cards.length, src:`./assets//card_${i}.png`});
@@ -16,7 +25,37 @@ $(document).ready(function() {
 		return 0.5 - Math.random();
 	});
 
+	// time
+	let time = 0.00;
+	let minutes = 0;
+	let seconds = 0.00;
+	let timeCounting;
+	
+	const timeCountingHandler = () => {
+		if(startGame) {
+			clearInterval(timeCounting);
+			timeCounting = setInterval(() => {
+				let showTime;
+				time += 0.01;
+				seconds += 0.01;
+				if(time > 60.00) {
+					minutes = (time/60).toString();
+					minutes = minutes.split('.')[0];
+					if((minutes * seconds.toFixed(2)) >= time.toFixed(2)) {
+						seconds = 0.00;
+					}
+					showTime = `${minutes} min  ${seconds.toFixed(2)} sec`;
+				} else {
+					showTime = `${seconds.toFixed(2)} sec`;
+				}
+				$('.time').text(showTime);
+			}, 10);
+		}
+	}
+
 	$('img').on('click', function(event) {
+		startGame = true;
+		timeCountingHandler();
 		flippedCards.push($(this));
 		$(this).addClass('flipped');
 		setTimeout(() => {
@@ -59,30 +98,25 @@ $(document).ready(function() {
 					delayed2 = setTimeout(() => {
 						flippedCards = [];
 						score.tries += 1;
-						if(score.bonus === 2) {
-							score.info = "GOOD";
-							score.color = 'red';
-						} else if(score.bonus === 3 || score.bonus === 4) {
-							score.info = "NICE";
-							score.color = 'orange';
-						} else if(score.bonus === 5 ) {
-							score.info = 'GREAT';
-							score.color = 'cornflowerblue';
-						} else if(score.bonus === 6) {
-							score.info = 'PERFECT';
-							score.color = 'green';
-						}
-						$('.bonus-info').text(score.info).css({color: score.color});
-						$('#tries').text(score.tries);
-						$('#score').text(score.total);
-						console.log(score);
-					}, 300);
+						scoreArray.forEach((item) => {
+							if(score.bonus === item.bonus) {
+								score.info = item.info;
+								score.color = item.color
+							}
+						})
+						$('.bonus-info').removeClass('pulse');
+						$('#score').removeClass('pulse');
+						setTimeout(() => {
+							$('#tries').text(score.tries);
+							$('#score').text(score.total).addClass('pulse');
+							setTimeout(() => {
+								$('.bonus-info').addClass('pulse');
+								$('.bonus-info').text(score.info).css({color: score.color});
+							}, 100);
+						}, 100);
+					}, 400);
 				});
-			}, 300)
+			}, 300);
 		}
 	});
-
-	const scoreUpdate = () => {
-
-	}
-})
+});

@@ -267,9 +267,12 @@ footer p {
 }
 
 .bonus-info {
-  font-size: 24px;
+  font-size: 26px;
   color: #ff5e00;
   font-family: hobo;
+  text-align: center;
+  -webkit-transition: all .4s;
+  transition: all .4s;
 }
 
 .overlay {
@@ -314,6 +317,23 @@ footer p {
   color: #F08143;
   -webkit-animation: hover-button 1 .4s ease-out;
           animation: hover-button 1 .4s ease-out;
+}
+
+.pulse {
+  -webkit-animation: pulse 1 .4s ease-in-out;
+          animation: pulse 1 .4s ease-in-out;
+}
+
+#score {
+  display: block;
+}
+
+.time {
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
 }
 
 @-webkit-keyframes show-overlay {
@@ -391,6 +411,40 @@ footer p {
     -webkit-box-shadow: 0 0 6px 2px #F08143;
             box-shadow: 0 0 6px 2px #F08143;
     color: white;
+  }
+}
+
+@-webkit-keyframes pulse {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 /*# sourceMappingURL=style.css.map */

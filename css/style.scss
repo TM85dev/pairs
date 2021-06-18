@@ -169,9 +169,11 @@ footer {
     opacity: 0;
 }
 .bonus-info {
-    font-size: 24px;
+    font-size: 26px;
     color: rgb(255, 94, 0);
     font-family: hobo;
+    text-align:center;
+    transition: all .4s;
 }
 .overlay {
     display: flex;
@@ -205,6 +207,18 @@ footer {
         }
     }
 }
+.pulse {
+    animation:  pulse 1 .4s ease-in-out;
+}
+#score {
+    display: block;
+}
+.time {
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-50%);
+    left: 50%;
+}
 
 @keyframes show-overlay {
     from {
@@ -236,5 +250,18 @@ footer {
         background-color: #F08143;
         box-shadow: 0 0 6px 2px #F08143;
         color: white;
+    }
+}
+@keyframes pulse {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+    to {
+        transform: scale(1);
     }
 }
