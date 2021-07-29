@@ -76,10 +76,14 @@ $(document).ready(function() {
 									const calc = (score.total/score.tries) + (score.total/(minutes + seconds.toFixed(2)));
 									stopCounting(startCounting);
 									$('.board').append(restartButton);
-									if(res[9].points < calc) {
-										$(document.body).append(inputEl);
+									if(res.length >= 10) {
+										if(res[9].points < calc) {
+											$(document.body).append(inputEl);
+										} else {
+											showScore(event);
+										}
 									} else {
-										showScore(event);
+										$(document.body).append(inputEl);
 									}
 								});
 							}
